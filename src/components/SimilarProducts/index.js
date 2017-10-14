@@ -16,7 +16,7 @@ export default class SimilarProducts extends Component {
       <div className={styles.container}>
         <div className={styles.title}>Sofas</div>
         <div className={styles.tiles}>
-          {this.props.similarProducts.map(product => <ProductTile product={product} />)}
+          {this.props.similarProducts.map((product, index) => <ProductTile product={product} key={index} />)}
         </div>
       </div>
     )

@@ -1,13 +1,15 @@
 import {
   FETCH_DATA_REQUEST_SUCCEEDED,
-  SET_PRODUCT_ID_IN_FOCUS,
+  SELECT_PRODUCT_IN_ROOM,
+  SELECT_SIMILAR_PRODUCT,
 } from 'redux/action-types'
 
 const idInFocus = (state = '', action) => {
   switch (action.type) {
     case FETCH_DATA_REQUEST_SUCCEEDED:
       return action.payload.products.idInFocus
-    case SET_PRODUCT_ID_IN_FOCUS:
+    case SELECT_PRODUCT_IN_ROOM:
+    case SELECT_SIMILAR_PRODUCT:
       return action.payload.productId
     default:
       return state

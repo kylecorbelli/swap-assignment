@@ -10,26 +10,36 @@ export default class ProductTile extends Component {
       id: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
       url: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
     }).isRequired,
     productIdInFocus: PropTypes.string.isRequired,
+    selectSimilarProduct: PropTypes.func.isRequired,
   }
 
-  constructor (props) {
-    super(props)
+  isFocusedProduct = () => {
     const {
       productIdInFocus,
       product: { id },
-    } = props
-    this.state = {
-      isFocusedProduct: productIdInFocus === String(id)
-    }
+    } = this.props
+    return productIdInFocus === String(id)
+  }
+
+  selectProduct = () => {
+    const {
+      product: { id, type },
+      selectSimilarProduct,
+    } = this.props
+    selectSimilarProduct({ productId: id, productType: type })
   }
 
   render = () => {
-    const { isFocusedProduct } = this.state
-    const { price, url } = this.props.product
+    const { price,url } = this.props.product
+    const isFocusedProduct = this.isFocusedProduct()
     return (
-      <div className={classnames(styles.container, { [styles.focused]: isFocusedProduct })}>
+      <div
+        className={classnames(styles.container, { [styles.focused]: isFocusedProduct })}
+        onClick={this.selectProduct}
+      >
         <div className={styles.photoWrapper}>
           <img className={styles.photo} src={url} alt="product" />
         </div>

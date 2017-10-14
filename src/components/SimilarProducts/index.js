@@ -12,19 +12,28 @@ export default class SimilarProducts extends Component {
     })),
     productIdInFocus: PropTypes.string,
     productTypeInFocus: PropTypes.string,
+    selectSimilarProduct: PropTypes.func.isRequired,
   }
 
   render = () => {
     const {
       productIdInFocus,
       productTypeInFocus,
+      selectSimilarProduct,
       similarProducts,
     } = this.props
     return (
       <div className={styles.container}>
         <div className={styles.title}>{pluralize(productTypeInFocus)}</div>
         <div className={styles.tiles}>
-          {similarProducts.map((product, index) => <ProductTile product={product} key={index} productIdInFocus={productIdInFocus} />)}
+          {similarProducts.map((product, index) => (
+            <ProductTile
+              product={product}
+              key={index}
+              productIdInFocus={productIdInFocus}
+              selectSimilarProduct={selectSimilarProduct}
+            />
+          ))}
         </div>
       </div>
     )

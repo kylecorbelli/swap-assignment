@@ -3,7 +3,8 @@ import {
   FETCH_DATA_REQUEST_SENT,
   FETCH_DATA_REQUEST_FAILED,
   FETCH_DATA_REQUEST_SUCCEEDED,
-  SET_PRODUCT_ID_IN_FOCUS,
+  SELECT_PRODUCT_IN_ROOM,
+  SELECT_SIMILAR_PRODUCT,
 } from 'redux/action-types'
 import { getData } from 'services/data'
 
@@ -60,9 +61,17 @@ export const fetchData = () => async (dispatch) => {
   }
 }
 
-export const setProductIdInFocus = (productId) => ({
-  type: SET_PRODUCT_ID_IN_FOCUS,
+export const selectProductInRoom = (productId) => ({
+  type: SELECT_PRODUCT_IN_ROOM,
   payload: {
     productId,
+  },
+})
+
+export const selectSimilarProduct = ({ productId, productType }) => ({
+  type: SELECT_SIMILAR_PRODUCT,
+  payload: {
+    productId,
+    productType,
   },
 })

@@ -5,11 +5,11 @@ import styles from './RoomView.css'
 export default class RoomView extends Component {
   static propTypes = {
     roomPhoto: PropTypes.string.isRequired,
-    setProductIdInFocus: PropTypes.func.isRequired,
+    selectProductInRoom: PropTypes.func.isRequired,
   }
 
-  setProductIdInFocus = (productId) => (event) => {
-    this.props.setProductIdInFocus(productId)
+  selectProductInRoom = (productId) => (event) => {
+    this.props.selectProductInRoom(productId)
   }
 
   render = () => {
@@ -26,7 +26,7 @@ export default class RoomView extends Component {
               alt=""
               className={styles.product}
               key={id}
-              onClick={this.setProductIdInFocus(id)}
+              onClick={this.selectProductInRoom(id)}
               src={url}
               style={{
                 top: `${top}%`,

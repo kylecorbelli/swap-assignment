@@ -3,6 +3,7 @@ import {
   FETCH_DATA_REQUEST_SENT,
   FETCH_DATA_REQUEST_FAILED,
   FETCH_DATA_REQUEST_SUCCEEDED,
+  SET_PRODUCT_ID_IN_FOCUS,
 } from 'redux/action-types'
 import { getData } from 'services/data'
 
@@ -36,7 +37,14 @@ export const fetchData = () => async (dispatch) => {
       type: room_type,
     }
     const products = {
-      idSelected: rawProducts[0].id,
+      idInFocus: rawProducts[0].id,
+      idsSelected: rawProducts.reduce(
+        (cumulativeIdsSelected, currentProduct) => ({
+          ...cumulativeIdsSelected,
+          [currentProduct.type]: cumulativeIdsSelected[currentProduct.type] || currentProduct.id,
+        }),
+        {},
+      ),
       byId: rawProducts.reduce(
         (cumulativeProductsById, currentProduct) => ({
           ...cumulativeProductsById,
@@ -51,3 +59,10 @@ export const fetchData = () => async (dispatch) => {
     throw error
   }
 }
+
+export const setProductIdInFocus = (productId) => ({
+  type: SET_PRODUCT_ID_IN_FOCUS,
+  payload: {
+    productId,
+  },
+})

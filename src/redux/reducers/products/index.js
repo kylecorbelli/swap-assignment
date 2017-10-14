@@ -1,12 +1,10 @@
-import { FETCH_DATA_REQUEST_SUCCEEDED } from 'redux/action-types'
+import { combineReducers } from 'redux'
+import byId from './byId'
+import idInFocus from './idInFocus'
+import idsSelected from './idsSelected'
 
-const products = (state = {}, action) => {
-  switch (action.type) {
-    case FETCH_DATA_REQUEST_SUCCEEDED:
-      return action.payload.products
-    default:
-      return state
-  }
-}
-
-export default products
+export default combineReducers({
+  byId,
+  idInFocus,
+  idsSelected,
+})

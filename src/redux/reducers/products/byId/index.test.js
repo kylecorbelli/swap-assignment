@@ -1,12 +1,12 @@
+import byId from './index'
 import { fetchDataRequestSucceeded } from 'redux/actions'
-import products from 'redux/reducers/products/index'
 
-describe('products', () => {
+describe('products.byId', () => {
   describe('FETCH_DATA_REQUEST_SUCCEEDED', () => {
-    it('updates the products data', () => {
+    it('sets the products by ID', () => {
       const initialState = {}
       const newProducts = {
-        idSelected: 101,
+        idInFocus: 101,
         byId: {
           101: {
             id: 101,
@@ -14,8 +14,8 @@ describe('products', () => {
         },
       }
       const action = fetchDataRequestSucceeded({ room: {}, products: newProducts })
-      const newState = products(initialState, action)
-      expect(newState).toEqual(newProducts)
+      const newState = byId(initialState, action)
+      expect(newState).toEqual(newProducts.byId)
     })
   })
 })

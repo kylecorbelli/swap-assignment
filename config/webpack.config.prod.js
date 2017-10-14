@@ -176,6 +176,7 @@ module.exports = {
                       loader: require.resolve('css-loader'),
                       options: {
                         importLoaders: 1,
+                        modules: true,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
                       },
@@ -188,6 +189,9 @@ module.exports = {
                         ident: 'postcss',
                         plugins: () => [
                           require('postcss-flexbugs-fixes'),
+                          require('postcss-import'),
+                          require('postcss-cssnext'),
+                          require('postcss-mixins'),
                           autoprefixer({
                             browsers: [
                               '>1%',

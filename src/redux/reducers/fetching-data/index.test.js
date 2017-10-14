@@ -1,10 +1,10 @@
-import fetchingData from './index'
+import fetchingData from 'redux/reducers/fetching-data'
 import {
   fetchDataRequestSent,
   fetchDataRequestFailed,
   fetchDataRequestSucceeded,
-} from '../../actions'
-import { expectFetchingToChangeTo } from '../../../services/test-helpers'
+} from 'redux/actions'
+import { expectFetchingToChangeTo } from 'services/test-helpers'
 
 describe('fetchingData', () => {
   describe('FETCH_DATA_REQUEST_SENT', () => {

@@ -1,5 +1,5 @@
-import { fetchDataRequestSucceeded } from '../../actions'
-import products from './index'
+import { fetchDataRequestSucceeded } from 'redux/actions'
+import products from 'redux/reducers/products/index'
 
 describe('products', () => {
   describe('FETCH_DATA_REQUEST_SUCCEEDED', () => {

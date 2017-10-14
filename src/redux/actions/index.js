@@ -3,8 +3,8 @@ import {
   FETCH_DATA_REQUEST_SENT,
   FETCH_DATA_REQUEST_FAILED,
   FETCH_DATA_REQUEST_SUCCEEDED,
-} from '../action-types'
-import { getData } from '../../services/data'
+} from 'redux/action-types'
+import { getData } from 'services/data'
 
 export const fetchDataRequestSent = () => ({
   type: FETCH_DATA_REQUEST_SENT,

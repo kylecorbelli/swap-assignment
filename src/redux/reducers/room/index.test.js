@@ -1,5 +1,5 @@
-import room from './index'
-import { fetchDataRequestSucceeded } from '../../actions'
+import room from 'redux/reducers/room'
+import { fetchDataRequestSucceeded } from 'redux/actions'
 
 describe('room', () => {
   describe('FETCH_DATA_REQUEST_SUCCEEDED', () => {

@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import logo from './logo.svg';
-import styles from './App.css';
-import { fetchData } from 'redux/actions'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import logo from './logo.svg'
+import styles from './App.css'
+import SiteHeader from 'components/SiteHeader'
 
-class App extends Component {
+export default class App extends Component {
+  static propTypes = {
+    fetchData: PropTypes.func.isRequired,
+  }
+
   componentDidMount = () => {
     this.props.fetchData()
   }
 
   render() {
     return (
-      <div className={styles.app}>
+      <div className={styles.container}>
+        <SiteHeader />
         <header className={styles.header}>
           <img src={logo} className={styles.logo} alt="logo" />
           <h1 className={styles.title}>Welcome to React</h1>
@@ -20,11 +25,6 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
-    );
+    )
   }
 }
-
-export default connect(
-  null,
-  { fetchData },
-)(App);

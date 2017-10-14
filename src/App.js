@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import logo from './logo.svg';
 import './App.css';
+import { fetchData } from './redux/actions'
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.fetchData()
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,4 +24,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  null,
+  { fetchData },
+)(App);

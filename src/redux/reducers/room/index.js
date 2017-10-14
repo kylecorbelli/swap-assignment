@@ -1,4 +1,4 @@
-import { FETCH_DATA_REQUEST_SUCCEEDED } from '../../action-types'
+import { FETCH_DATA_REQUEST_SUCCEEDED } from 'redux/action-types'
 
 const room = (state = {}, action) => {
   switch (action.type) {

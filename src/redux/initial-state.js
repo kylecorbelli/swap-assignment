@@ -4,6 +4,10 @@ const initialState = {
     photo: '',
     type: '',
   },
+  products: {
+    idsSelected: {},
+    byId: {},
+  },
 }
 
 export default initialState

@@ -13,3 +13,10 @@ export const prettyCurrency = (dollarAmount) => {
   const formattedAmount = dollarAmount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
   return `$${formattedAmount}`
 }
+
+export const pluralize = (word) => {
+  const outlierWords = {
+    art: 'art',
+  }
+  return outlierWords[word] || `${word}s`
+}

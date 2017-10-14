@@ -1,5 +1,5 @@
 .container {
-  align-items: center;
+  align-items: stretch;
   background-color: #fff;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 81%, 0.6);
   cursor: pointer;
@@ -10,19 +10,41 @@
   width: 100%;
 }
 
+.focused {
+  border: 2px solid #fdd8d4;
+  box-shadow: 0 10px 15px 0 hsla(0, 0%, 81%, 0.6);
+}
+
+.cta {
+  align-items: center;
+  background-color: #fdd8d4;
+  display: flex;
+  font-family: Raleway;
+  font-size: 10px;
+  font-weight: bold;
+  height: 23px;
+  justify-content: center;
+  color: #222328;
+}
+
+.hidden {
+  display: none;
+}
+
 .photoWrapper {
+  align-items: center;
   display: flex;
   flex: 3;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
 }
 
 .photo {
-  width: 100%;
+  width: 50%;
 }
 
 .price {
+  align-items: center;
   color: #222328;
   display: flex;
   flex: 1;

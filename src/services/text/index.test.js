@@ -1,4 +1,5 @@
 import {
+  pluralize,
   prettyCurrency,
   snakeCaseToWords,
 } from './index'
@@ -25,6 +26,18 @@ describe('text service', () => {
     it('adds a thousands comma separator', () => {
       const result = prettyCurrency(2000)
       expect(result).toBe('$2,000.00')
+    })
+  })
+
+  describe('pluralize', () => {
+    it('pluralizes regular words', () => {
+      const result = pluralize('sofa')
+      expect(result).toBe('sofas')
+    })
+
+    it('pluralizes outlier words', () => {
+      const result = pluralize('art')
+      expect(result).toBe('art')
     })
   })
 })

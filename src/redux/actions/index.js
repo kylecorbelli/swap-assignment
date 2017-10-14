@@ -3,6 +3,8 @@ import {
   FETCH_DATA_REQUEST_SENT,
   FETCH_DATA_REQUEST_FAILED,
   FETCH_DATA_REQUEST_SUCCEEDED,
+  SELECT_PRODUCT_IN_ROOM,
+  SELECT_SIMILAR_PRODUCT,
 } from 'redux/action-types'
 import { getData } from 'services/data'
 
@@ -36,7 +38,14 @@ export const fetchData = () => async (dispatch) => {
       type: room_type,
     }
     const products = {
-      idSelected: rawProducts[0].id,
+      idInFocus: rawProducts[0].id,
+      idsSelected: rawProducts.reduce(
+        (cumulativeIdsSelected, currentProduct) => ({
+          ...cumulativeIdsSelected,
+          [currentProduct.type]: cumulativeIdsSelected[currentProduct.type] || currentProduct.id,
+        }),
+        {},
+      ),
       byId: rawProducts.reduce(
         (cumulativeProductsById, currentProduct) => ({
           ...cumulativeProductsById,
@@ -51,3 +60,18 @@ export const fetchData = () => async (dispatch) => {
     throw error
   }
 }
+
+export const selectProductInRoom = (productId) => ({
+  type: SELECT_PRODUCT_IN_ROOM,
+  payload: {
+    productId,
+  },
+})
+
+export const selectSimilarProduct = ({ productId, productType }) => ({
+  type: SELECT_SIMILAR_PRODUCT,
+  payload: {
+    productId,
+    productType,
+  },
+})
